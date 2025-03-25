@@ -1,27 +1,27 @@
 class OpweratingSwitum {
-	var Distwo = ""
-	var Kerwal = ""
-	var DwesktwopEnwaiorment = ""
+	var distwo = ""
+	var kerwal = ""
+	var dwesktwopEnwaiorment = ""
 }
 val laptop = OpweratingSwitum()
 val Desktop = OpweratingSwitum()
 
 fun main() {
-	Desktop.Distwo = "windows 11"
-	Desktop.Kerwal = "windows nt 10.0.26100"
-	Desktop.DwesktwopEnwaiorment = "windows 11"
-	laptop.Distwo = "manjaro/arch"
-	laptop.Kerwal = "linux 6.12.19-1"
-	laptop.DwesktwopEnwaiorment = "KDE plasma"
+	Desktop.distwo = "windows 11"
+	Desktop.kerwal = "windows nt 10.0.26100"
+	Desktop.dwesktwopEnwaiorment = "windows 11"
+	laptop.distwo = "manjaro/arch"
+	laptop.kerwal = "linux 6.12.19-1"
+	laptop.dwesktwopEnwaiorment = "KDE plasma"
 	println("Laptop")
 	println("━ ━ ━ ━")
-	println("distro: ${laptop.Distwo}")
-	println("kernel: ${laptop.Kerwal}")
-	println("DE: ${laptop.DwesktwopEnwaiorment}")
+	println("distro: ${laptop.distwo}")
+	println("kernel: ${laptop.kerwal}")
+	println("DE: ${laptop.dwesktwopEnwaiorment}")
 	println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
 	println("Desktop")
 	println("━ ━ ━ ━")
-	println("distro: ${Desktop.Distwo}")
-	println("kernel: ${Desktop.Kerwal}")
-	println("DE: ${Desktop.DwesktwopEnwaiorment}")
+	println("distro: ${Desktop.distwo}")
+	println("kernel: ${Desktop.kerwal}")
+	println("DE: ${Desktop.dwesktwopEnwaiorment}")
 }
