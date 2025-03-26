@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="libs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/hamcrest-3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jLibreHardwareMonitor-1.0.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jna-5.17.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jna-platform-5.17.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/junit-jupiter-api-5.12.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/oshi-core-6.8.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/slf4j-api-2.0.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/slf4j-simple-2.0.17.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
