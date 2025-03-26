@@ -1,6 +1,14 @@
 import oshi.SystemInfo
 import oshi.hardware.GraphicsCard
+import oshi.hardware.CentralProcessor
 import oshi.hardware.HardwareAbstractionLayer
+import java.math.BigDecimal
+import java.math.RoundingMode
+
+object cpui {
+	var model = ""
+	var redblue = ""
+}
 object gpui {
 	var vram = ""
 	var model = ""
@@ -9,8 +17,6 @@ object gpui {
 class idk {
 	var distro = ""
 	var kernel = ""
-	var cpu = ""
-	var gpu = ""
 	val ram_usage = 0
 }
 val sys = idk()
@@ -20,8 +26,8 @@ fun GetGpu() {
 	val hardware: HardwareAbstractionLayer = si.hardware
 	val graphicsCards: List<GraphicsCard> = hardware.graphicsCards
 
-	if (!graphicsCards.isEmpty()) {
-		graphicsCards.forEachIndexed { index, gpu ->
+	if (graphicsCards.isNotEmpty()) {
+		graphicsCards.forEachIndexed { _, gpu ->
 			val vramBytes = gpu.vRam
 			val vramGib = vramBytes / (1024.0 * 1024.0 * 1024.0)
 			gpui.vram = "Vram: ${String.format("%.2f", vramGib)} GiB"
@@ -29,18 +35,30 @@ fun GetGpu() {
 			gpui.RedBlueGreen = "manufacturer: ${gpu.vendor}"
 		}
 	}
-	else {
-		println("No graphics cards found.")
-	}
 }
+fun GetCpu() {
+	val si = SystemInfo()
+	val hardware: HardwareAbstractionLayer = si.hardware
+	val processor: CentralProcessor = hardware.processor
 
+	val hz1 = BigDecimal(processor.maxFreq)
+	val hz = hz1.setScale(1, RoundingMode.CEILING)
+	val GHz = hz.divide(BigDecimal(1000000000), RoundingMode.CEILING).toDouble()
+	cpui.model = "cpu: ${processor.processorIdentifier.name} ${processor.physicalProcessorCount}(${processor.logicalProcessorCount}) ${GHz}GHz"
+	cpui.redblue = "manufacturer: ${processor.processorIdentifier.vendor}"
+}
 
 fun main() {
 	GetGpu()
+	GetCpu()
 	sys.distro = System.getProperty("os.name")
 	sys.kernel = System.getProperty("os.version")
 	println(sys.distro)
 	println(sys.kernel)
+	if (!gpui.model.isEmpty()) {
+		println("━━━━━━━━━━━━━━━━━━━━━━━━")
+		println(gpui.model + "\n" + gpui.RedBlueGreen + "\n" + gpui.vram)
+	}
 	println("━━━━━━━━━━━━━━━━━━━━━━━━")
-	println(gpui.model + "\n" + gpui.RedBlueGreen + "\n" + gpui.vram)
+	println(cpui.model + "\n" + cpui.redblue)
 }
